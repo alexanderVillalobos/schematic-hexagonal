@@ -1,0 +1,8 @@
+import { {{ classify name }} } from '../../domain/entities/{{ dasherize name }}.entity';
+
+export class Create{{ classify name }}UseCase {
+    execute(payload: Partial<{{ classify name }}>): {{ classify name }} {
+        // lógica de creación
+        return new {{ classify name }}(/* … */);
+    }
+}

@@ -1,0 +1,9 @@
+import { {{ classify name }} } from '../../domain/entities/{{ dasherize name }}.entity';
+
+export abstract class {{ classify name }}Repository {
+    abstract findAll(): Promise<<%= classify(name) %>[]>;
+    abstract findById(id: string): Promise<<%= classify(name) %> | null>;
+    abstract create(<%= camelize(name) %>: <%= classify(name) %>): Promise<<%= classify(name) %>>;
+    abstract update(id: string, <%= camelize(name) %>: Partial<<%= classify(name) %>>): Promise<<%= classify(name) %> | null>;
+    abstract delete(id: string): Promise<boolean>;
+}

@@ -1,0 +1,5 @@
+export class List{{ classify name}}Dto {
+  page?: number;
+  limit?: number;
+  search?: string;
+}

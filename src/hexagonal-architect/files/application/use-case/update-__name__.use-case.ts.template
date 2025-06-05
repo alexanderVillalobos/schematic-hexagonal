@@ -1,0 +1,14 @@
+import { {{ classify name }} } from '../../domain/entities/{{ dasherize name }}.entity';
+
+export class Update{{ classify name }}UseCase {
+    execute(id: string, payload: Partial<{{ classify name }}>): {{ classify name }} {
+        // lógica de actualización
+        const existingEntity = this.findById(id);
+        return new {{ classify name }}({ ...existingEntity, ...payload });
+    }
+
+    private findById(id: string): {{ classify name }} {
+        // implementar búsqueda
+        return new {{ classify name }}({ id });
+    }
+}

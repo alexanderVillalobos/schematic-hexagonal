@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "hexagonal-architect": {
+      "description": "Genera una arquitectura hexagonal básica",
+      "factory": "./hexagonal-architect/index#hexagonalArchitect",
+      "schema": "./hexagonal-architect/schema.json"
+    }
+  }
+}

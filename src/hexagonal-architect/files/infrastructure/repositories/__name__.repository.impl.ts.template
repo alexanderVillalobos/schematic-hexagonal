@@ -1,0 +1,36 @@
+import { {{ classify name }}Repository } from '../../domain/repositories/{{ dasherize name }}.repository';
+import { Create{{ classify name }}Dto } from '../dto/create-{{ dasherize name}}.dto';
+import { Promise } from 'mongoose';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { Injectable } from '@nestjs/common';
+
+@Injectable()
+export class {{ classify name }}RepositoryImpl implements {{ classify name }}Repository
+{
+  constructor(
+    @InjectModel({{ classify name }}.name)
+    private readonly model: Model<{{ classify name }}>
+  ) {}
+
+ async create({{ camelCase name }}: {{ classify name }}): Promise<{{ classify name }}> {
+    const created{{ classify name }} = new this.model({{ camelCase name }});
+    return created{{ camelCase name }}.save();
+  }
+
+  async update(id: string, {{ camelCase name }}: Partial<{{ classify name }}>): Promise<{{ classify name }}> {
+    return this.model.findByIdAndUpdate(id, {{ camelCase name }}, { new: true }).exec();
+  }
+
+  async delete(id: string): Promise<void> {
+    await this.model.findByIdAndDelete(id).exec();
+  }
+
+  async findById(id: string): Promise<{{ classify name }} | null> {
+    return this.model.findById(id).exec();
+  }
+
+  async findAll(): Promise<{{ classify name }}[]> {
+    return this.model.find().exec();
+  }
+}

@@ -1,0 +1,15 @@
+export class {{ classify name }} {
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+
+  constructor(params: {
+    id?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+  }) {
+    this.id = params.id || crypto.randomUUID();
+    this.createdAt = params.createdAt || new Date();
+    this.updatedAt = params.updatedAt || new Date();
+  }
+}

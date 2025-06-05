@@ -1,0 +1,17 @@
+import { {{ classify name }} } from '../../domain/entities/{{ dasherize name }}.entity';
+
+export class Delete{{ classify name }}UseCase {
+    execute(id: string): void {
+        const entity = this.findById(id);
+        this.deleteEntity(entity);
+    }
+
+    private findById(id: string): {{ classify name }} {
+        // implementar búsqueda
+        return new {{ classify name }}({ id });
+    }
+
+    private deleteEntity(entity: {{ classify name }}): void {
+        // implementar eliminación
+    }
+}

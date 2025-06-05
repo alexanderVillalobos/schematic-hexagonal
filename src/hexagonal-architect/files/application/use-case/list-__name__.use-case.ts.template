@@ -1,0 +1,10 @@
+import { {{ classify name }} } from '../../domain/entities/{{ dasherize name }}.entity';
+import { {{ classify name }}Repository } from '../../domain/repositories/{{ dasherize name }}.repository';
+
+export class List{{ classify name}}UseCase {
+  constructor(private repository: {{ classify name }}Repository) {}
+
+  async execute(filters?: any): Promise<{{ classify name}}[]> {
+    return this.repository.findAll(filters);
+  }
+}

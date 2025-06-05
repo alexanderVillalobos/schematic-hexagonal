@@ -1,0 +1,42 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Dependencias
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Archivos de compilación
+dist/
+*.js
+*.js.map
+*.d.ts
+
+# Entornos y variables
+.env
+.env.local
+.env.*.local
+
+# Archivos de prueba y cobertura
+coverage/
+*.log
+junit.xml
+
+# Configuración de IDEs
+.idea/
+.vscode/
+*.code-workspace
+
+# Archivos temporales
+tmp/
+temp/
+
+# Archivos generados por el schematic
+test-domain/  # Ejemplo de carpeta generada
+example-app/  # Si pruebas con una app de ejemplo
+
+# Archivos de depuración
+*.log
+debug/

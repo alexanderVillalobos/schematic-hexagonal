@@ -1,0 +1,33 @@
+{
+  "name": "nest-hexagonal-schematic",
+  "version": "0.0.1",
+  "description": "Schematics para generar estructura de arquitectura hexagonal en NestJS",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "schematics": "./dist/collection.json",
+  "scripts": {
+    "build": "tsc && npm run copy:files",
+    "copy:files": "copyfiles -u 1 \"src/collection.json\" \"src/hexagonal-architect/schema.json\" \"src/hexagonal-architect/files/**/*\" dist/",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "nest",
+    "nestjs",
+    "schematic",
+    "hexagonal",
+    "architecture"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@angular-devkit/core": "^19.2.8",
+    "@angular-devkit/schematics": "^19.2.8",
+    "@nestjs/schematics": "^11.0.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.8.3",
+    "copyfiles": "^2.4.1",
+    "@types/node": "^22.14.1",
+    "@angular-devkit/schematics-cli": "^19.2.8"
+  }
+}

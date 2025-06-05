@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "$id": "HexagonalArchitectSchema",
+  "title": "Hexagonal Architecture Options Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "El nombre de la entidad",
+      "x-prompt": "¿Cuál es el nombre de la entidad? (ej: user, product)"
+    },
+    "path": {
+      "type": "string",
+      "format": "path",
+      "description": "La ruta donde se generará la estructura",
+      "default": "src"
+    }
+  },
+  "required": ["name"]
+}

@@ -1,0 +1,66 @@
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query
+} from '@nestjs/common';
+import { Create{{ classify name}}Dto } from './dto/create-{{ dasherize name }}.dto';
+import { Update{{ classify name}}Dto } from './dto/update-{{ dasherize name }}.dto';
+import { List{{ classify name}}Dto } from './dto/list-{{ dasherize name }}.dto';
+import { Create{{ classify name}}UseCase } from '../application/use-case/create-{{ dasherize name }}.use-case';
+import { Update{{ classify name}}UseCase } from '../application/use-case/update-{{ dasherize name }}.use-case';
+import { Show{{ classify name}}UseCase } from '../application/use-case/show-{{ dasherize name }}.use-case';
+import { Delete{{ classify name}}UseCase } from '../application/use-case/delete-{{ dasherize name }}.use-case';
+import { List{{ classify name}}UseCase } from '../application/use-case/list-{{ dasherize name }}.use-case';
+import { {{ classify name }} } from '../../domain/entities/{{ dasherize name }}.entity';
+
+@Controller('{{ dasherize name }}')
+export class {{ classify name }}Controller {
+  constructor(
+    private readonly createUseCase: Create{{ classify name}}UseCase,
+    private readonly updateUseCase: Update{{ classify name}}UseCase,
+    private readonly showUseCase: Show{{ classify name}}UseCase,
+    private readonly deleteUseCase: Delete{{ classify name}}UseCase,
+    private readonly listUseCase: List{{ classify name}}UseCase,
+  ) {}
+
+  @Post()
+  async create(
+    @Body() dto: Create{{ classify name}}Dto
+  ): Promise<{{ classify name}}> {
+    return this.createUseCase.execute(dto);
+  }
+
+  @Put(':id')
+  async update(
+    @Param('id') id: string,
+    @Body() dto: Update{{ classify name}}Dto
+  ): Promise<{{ classify name}}> {
+    return this.updateUseCase.execute(id, dto);
+  }
+
+  @Get(':id')
+  async show(
+    @Param('id') id: string
+  ): Promise<{{ classify name}}> {
+    return this.showUseCase.execute(id);
+  }
+
+  @Delete(':id')
+  async delete(
+    @Param('id') id: string
+  ): Promise<void> {
+    return this.deleteUseCase.execute(id);
+  }
+
+  @Get()
+  async list(
+     @Query() dto: List{{ classify name}}Dto
+  ): Promise<{{ classify name}}[]> {
+    return this.listUseCase.execute(filters);
+  }
+}

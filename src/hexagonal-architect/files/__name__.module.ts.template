@@ -1,0 +1,41 @@
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { {{ classify name }}Controller } from './infrastructure/{{ dasherize name }}.controller';
+import { {{ classify name }}Repository } from './domain/repositories/{{ dasherize name }}.repository';
+import { {{ classify name }}RepositoryImpl } from './infrastructure/repositories/{{ dasherize name }}.repository.impl';
+import { Create{{ classify name }}UseCases } from './application/use-cases/create-{{ dasherize name }}.use-cases';
+import { MongooseModule } from '@nestjs/mongoose';
+import { {{ classify name }}Schema } from './infrastructure/schema/{{ dasherize name }}.schema';
+
+// method to import and bidding yours use cases
+const createUseCaseProvider = (
+  UseCase: new (repository: {{ classify name }}Repository) => any,
+) => ({
+  provide: UseCase,
+  useFactory: (repository: {{ classify name }}Repository) => new UseCase(repository),
+  inject: [{{ classify name }}Repository],
+});
+
+@Module({
+  controllers: [{{ classify name }}Controller],
+  imports: [
+    ConfigModule,
+    MongooseModule.forFeature([
+      {
+        name: '{{ classify name}}',
+        schema: {{ classify name }}Schema,
+      },
+    ]),
+  ],
+  providers: [
+    {
+      provide: {{ classify name }}Repository,
+      useClass: {{ classify name }}RepositoryImpl,
+    },
+    createUseCaseProvider(Create{{ classify name }}UseCases),
+  ],
+  exports: [
+    //add use case if you need export
+  ],
+})
+export class {{ classify name }}Module {}

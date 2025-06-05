@@ -1,0 +1,9 @@
+export class Create{{ classify name }}Dto {
+
+  readonly field1: string;
+
+  readonly field2: string;
+
+  readonly field13: number;
+
+}
